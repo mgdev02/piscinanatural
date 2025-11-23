@@ -1,0 +1,282 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.camera-monitor-card {
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.monitor-grid {
+  width: calc(100vw - 10px);
+  height: calc(100vh - 160px);
+  gap: 3px;
+  padding: 0;
+  margin: 75px 5px 80px 5px;
+}
+
+/* Responsive adjustments para móviles */
+@media (max-width: 575.98px) {
+  .monitor-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-template-rows: repeat(auto-fit, 1fr) !important;
+  }
+}
+
+/* Tablets pequeñas */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .grid-2x1 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr) !important;
+  }
+
+  .grid-4x2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+  }
+
+  .grid-6x3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .grid-2x1 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr) !important;
+  }
+
+  .grid-4x2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+  }
+
+  .grid-6x3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+  }
+}
+
+/* Desktop pequeño */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .grid-2x1 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr) !important;
+  }
+
+  .grid-4x2 {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+  }
+
+  .grid-6x3 {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1200px) {
+  .grid-2x1 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr) !important;
+  }
+
+  .grid-4x2 {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+  }
+
+  .grid-6x3 {
+    grid-template-columns: repeat(6, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+  }
+}
+
+/* Estilos para el modal con tema de piscina */
+.modal-backdrop {
+  background-color: rgba(77, 208, 225, 0.5) !important;
+}
+
+.modal-content {
+  border: 2px solid #4dd0e1;
+  box-shadow: 0 4px 20px rgba(77, 208, 225, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Branding Styles */
+.branding-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.branding-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #00bcd4, #2196f3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.branding-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.branding-footer {
+  font-size: 0.7rem;
+  color: #888;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Piscina Card Styles */
+.piscina-badge {
+  background-color: rgba(0, 188, 212, 0.9);
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  max-width: 100%;
+}
+
+.piscina-badge-text {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: white;
+  font-weight: bold;
+}
+
+.piscina-params-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.piscina-param-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.piscina-param-item.temp {
+  background-color: rgba(240, 248, 255, 0.5);
+}
+
+.piscina-param-item.ph {
+  background-color: rgba(255, 240, 245, 0.5);
+}
+
+.piscina-param-item.orp {
+  background-color: rgba(255, 250, 240, 0.5);
+}
+
+.piscina-param-label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.piscina-param-value {
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+.piscina-param-subtext {
+  font-size: 0.65rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-animation {
+  animation: spin 2s linear infinite;
+}
