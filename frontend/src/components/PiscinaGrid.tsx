@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import type { Piscina } from '../types/piscina';
 import type { GridConfig as GridConfigType } from '../types/grid';
 import { PiscinaCard } from './PiscinaCard';
 import { PiscinaModal } from './PiscinaModal';
 import { GridConfig } from './GridConfig';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { MdLogout } from 'react-icons/md';
 
 interface PiscinaGridProps {
   piscinas: Piscina[];
@@ -35,14 +33,6 @@ export const PiscinaGrid = ({ piscinas }: PiscinaGridProps) => {
   });
   const [autoRotateEnabled, setAutoRotateEnabled] = useState(false);
   const [autoRotateInterval, setAutoRotateInterval] = useState(30); // seconds
-
-  const navigate = useNavigate();
-  const userEmail = localStorage.getItem('auth-email') || 'Usuario';
-
-  const handleLogout = () => {
-    localStorage.removeItem('auth-email');
-    navigate('/auth');
-  };
 
   useEffect(() => {
     localStorage.setItem(GRID_CONFIG_KEY, JSON.stringify(gridConfig));
@@ -176,53 +166,6 @@ export const PiscinaGrid = ({ piscinas }: PiscinaGridProps) => {
             onChangeAutoRotateInterval: setAutoRotateInterval
           })}
         />
-      )}
-
-      {!isFullscreen && (
-        <div
-          className="position-fixed"
-          style={{
-            top: '20px',
-            right: '20px',
-            zIndex: 1050,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px'
-          }}
-        >
-          <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#666' }}>
-            Hola, {userEmail.split('@')[0]}!
-          </span>
-          <button
-            className="btn btn-outline-primary"
-            style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#ffffff',
-              color: '#00bcd4',
-              border: '2px solid #4dd0e1',
-              boxShadow: '0 4px 12px rgba(77, 208, 225, 0.4)',
-              transition: 'all 0.3s',
-              padding: 0
-            }}
-            onClick={handleLogout}
-            title="Cerrar Sesión"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(77, 208, 225, 0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(77, 208, 225, 0.4)';
-            }}
-          >
-            <MdLogout size={20} />
-          </button>
-        </div>
       )}
 
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>

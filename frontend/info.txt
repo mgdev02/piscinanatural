@@ -1,0 +1,25 @@
+por card:
+-valor ph
+-objetivo ph
+-volumen de pileta
+-sensor tanque ph
+-sensor tanque cloro
+-valor cloro mv
+-valor cloro ppm
+-temperatura
+-nombre pileta
+-estado online/offline
+-flujo
+-ult sincronizacion (ult vez online)
+-nombre y apellido usuario
+
+guardar:
+-modo de vista
+-autorotacion
+
+auth
+-correo electronico
+-contraseña px
+
+
+
